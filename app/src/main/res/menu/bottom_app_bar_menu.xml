@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/openDevPage"
+        android:icon="@drawable/store_icon"
+        android:title="More apps" />
+    <item
+        android:id="@+id/rateAppButton"
+        android:icon="@drawable/rate_icon"
+        android:title="Leave a review" />
+</menu>

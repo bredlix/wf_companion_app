@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTheme" parent="Base.Theme.BaseTheme" />
+
+    <style name="MainAppTheme" parent="AppTheme" >
+        <item name="android:statusBarColor">@color/md_theme_surfaceContainerLow</item>
+        <item name="android:windowBackground">@color/md_theme_surfaceContainerLow</item>
+        <item name="android:navigationBarColor">@color/md_theme_surfaceContainerHighest</item>
+        <item name="android:textColor">@color/md_theme_onSurface</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="MainAppTheme.CardView" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/md_theme_surfaceContainerHighest</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="cardElevation">8dp</item>
+
+    </style>
+    <style name="MainAppTheme.MyBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/md_theme_primary</item>
+        <item name="itemTextColor">@color/md_theme_primary</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/md_theme_surfaceContainerHighest</item>
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="rippleColor">@color/md_theme_inversePrimary</item>
+        <item name="itemTextAppearanceActiveBoldEnabled">false</item>
+        <item name="itemActiveIndicatorStyle">@null</item>
+    </style>
+</resources>
