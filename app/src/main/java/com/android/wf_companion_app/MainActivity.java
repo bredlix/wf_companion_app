@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.openDevPage) {
-                //PUT YOUR GOOGLE PLAY DEVELOPER ID HERE
-                String url = "https://play.google.com/store/apps/dev?id=8530728375127376092";
+                String dev_id = getString(R.string.dev_id);
+                String url = "https://play.google.com/store/apps/dev?id=" + dev_id;
                 Uri uri = Uri.parse(url);
                 Intent intentDevPage = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intentDevPage);
