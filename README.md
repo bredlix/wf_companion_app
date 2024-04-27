@@ -29,6 +29,8 @@ Open Android Studio and select `Get from Version Control`. Enter the URL of this
 On the repository page click `Code > Download ZIP`. Extract content to the preferred folder. Open Android Studio and select `Open an existing Android Studio project`. Navigate to the directory where you extracted the project and open it.
 
 ### 2. Change the Package Name
+![image](https://github.com/bredlix/wf_companion_app/assets/91148776/f5a43c6e-dde7-4855-8e6f-fff31d33c8e9)![Снимок экрана 2024-04-27 234356](https://github.com/bredlix/wf_companion_app/assets/91148776/a559450c-331a-4e5d-8d5f-f0326fe81985)
+
 
 In the Project pane, go to the `Options (3 dots) > Tree appearance > Compact Middle Packages` and uncheck/de-select it. Your package directory will now be broken up into individual directories (`com > android > wf_companion_app >...`).
  Individually select each directory(`android`, `wf_companion_app`) and:
