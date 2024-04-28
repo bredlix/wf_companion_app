@@ -66,7 +66,7 @@ If you want to add a new image, simply copy and paste your image file into the `
 
 ### 7. Change app display name
 
-Go to `res > values` to find `strings.xml`. Change `name="app_name"` entry to your desired app name (displayed in app only).
+Go to `res > values` to find `strings.xml`. Change `name="app_name"` entry to your desired app name.
 
 ### 8. Change google play developer ID
 
