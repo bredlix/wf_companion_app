@@ -15,6 +15,7 @@ NOTE:
 - companion app's package should be the same as the watch face package
 - all the steps bellow suppose the use of `Project` project view
 - most of the changes are supposed to be done in the `scr > main` folder (app module)
+- the build can be tested on the device either before step.2 or after step.4. simply `File > Sync Project with Gradle Files`
 
 ## 
 
