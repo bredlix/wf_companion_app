@@ -8,4 +8,8 @@
         android:id="@+id/rateAppButton"
         android:icon="@drawable/rate_icon"
         android:title="Leave a review" />
+    <item
+        android:id="@+id/policyButton"
+        android:icon="@drawable/policy_icon"
+        android:title="Privacy Policy" />
 </menu>

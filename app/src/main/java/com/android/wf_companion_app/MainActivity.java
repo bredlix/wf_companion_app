@@ -103,6 +103,12 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToMarket);
                 }
                 return true;
+            } else if (id == R.id.policyButton) {
+                String policyUrl = getString(R.string.policy_url);
+                Uri uri = Uri.parse(policyUrl);
+                Intent intentPolicy = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intentPolicy);
+                return true;
             } else {
                 return false;
             }

@@ -44,11 +44,11 @@ In the Project pane, go to the `Options (3 dots) > Tree appearance > Compact Mid
 - Enter the new name and hit `Refactor`
 - Allow a minute to let Android Studio update all changes.
 
-Eventually you should have `com.your_comany.your_app_name` and the corresponding project structure.
+Eventually you should have `com.your_comany.your_app_name` and the corresponding folder structure `main > java > com > your_comany > your_app_name`.
 
 ### 3. Update AndroidManifest.xml
 
-Open the `AndroidManifest.xml` file. Find the `<activity>` tag and change the `android:name` attribute to your new package namespace (leave `.MainActivity` in the end).
+Open the `AndroidManifest.xml` file. Find the `<activity>` tag and change the `android:name` attribute to `com.your_comany.your_app_name.MainActivity`.
 
 ### 4. Update the Gradle build file
 
@@ -74,14 +74,18 @@ Go to `res > values` to find `strings.xml`. Change `name="app_name"` entry to yo
 
 Go to `res > values` to find `strings.xml`. Change `name="dev_id"` entry to your google play developer ID (to open your dev page when user clicks 'more apps' button).
 
-### 9. Sync the project with gradle
+### 9. Change Privacy policy URL
+
+Go to `res > values` to find `strings.xml`. Change `name="policy_url"` entry to your Privacy Policy URL.
+
+### 10. Sync the project with gradle
 
 After you've made these changes, be sure to sync your project with Gradle files. You can do this by clicking on `File > Sync Project with Gradle Files`.
 
-### 10. Test the build
+### 11. Test the build
 
 Run your project on the connected or emulated device to see the changes take effect.
 
-### 11. Build apk/aab for upload
+### 12. Build apk/aab for upload
 
 Click `Build > Generate signed Bundle/APK...`. Sign with the same keystore & alias used for the watch face build.
