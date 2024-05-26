@@ -30,12 +30,18 @@ Open Android Studio and select `Get from Version Control`. Enter the URL of this
 
 On the repository page click `Code > Download ZIP`. Extract content to the preferred folder. Open Android Studio and select `Open an existing Android Studio project`. Navigate to the directory where you extracted the project and open it.
 
-### 2. Change the Package Name
+### 2. Update the Gradle build file
+
+Open the `build.gradle.kts` file in the `app` directory.
+- Find the `android` block and change the `namespace` to your new package name.
+- Find the `defaultConfig` block and change the `applicationId` to your new package name.
+
+### 3. Change the Package Name
 ![image](https://github.com/bredlix/wf_companion_app/assets/91148776/f5a43c6e-dde7-4855-8e6f-fff31d33c8e9)![Снимок экрана 2024-04-27 234356](https://github.com/bredlix/wf_companion_app/assets/91148776/a559450c-331a-4e5d-8d5f-f0326fe81985)
 
 
 In the Project pane, go to the `Options (3 dots) > Tree appearance > Compact Middle Packages` and uncheck/de-select it. Your package directory will now be broken up into individual directories (`com > android > wf_companion_app >...`).
- Individually select each directory(`android`, `wf_companion_app`) and:
+Individually select each directory(`android`, `wf_companion_app`) and:
 
 - Right-click it
 - Select `Refactor`
@@ -46,24 +52,18 @@ In the Project pane, go to the `Options (3 dots) > Tree appearance > Compact Mid
 
 Eventually you should have `com.your_comany.your_app_name` and the corresponding folder structure `main > java > com > your_comany > your_app_name`.
 
-### 3. Update AndroidManifest.xml
+### 4. Update AndroidManifest.xml
 
 Open the `AndroidManifest.xml` file. Find the `<activity>` tag and change the `android:name` attribute to `com.your_comany.your_app_name.MainActivity`.
 
-### 4. Update the Gradle build file
-
-Open the `build.gradle.kts` file in the `app` directory. 
-- Find the `android` block and change the `namespace` to your new package name.
-- Find the `defaultConfig` block and change the `applicationId` to your new package name.
-
 ### 5. Change app icon
 
-Right-click the res folder and go to `New > Image Asset`. On the `Foreground Layer` tab, select the `Asset Type` to `Image` and browse to the new icon you want. 
+Right-click the res folder and go to `New > Image Asset`. On the `Foreground Layer` tab, select the `Asset Type` to `Image` and browse to the new icon you want.
 On the `Background Layer` tab, select the `Asset Type` to `Color` and pick a color of your choice. Click `Next > Finish` and the icon should be changed.
 
 ### 6. Change watchface image
 
-Go to `res > drawable` to find the `wf_img.png`. You can replace an existing image by right-clicking it and selecting `Reveal in Finder` (or `Show in Explorer` for Windows), then replace the file there with your new image (it should have the same name and format). 
+Go to `res > drawable` to find the `wf_img.png`. You can replace an existing image by right-clicking it and selecting `Reveal in Finder` (or `Show in Explorer` for Windows), then replace the file there with your new image (it should have the same name and format).
 If you want to add a new image, simply copy and paste your image file into the `res/drawable` directory. You can then use this image in your project by referencing it as `@drawable/your_image_name`.
 
 ### 7. Change app display name
