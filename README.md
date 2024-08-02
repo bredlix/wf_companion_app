@@ -1,5 +1,9 @@
 # wf_companion_app
-![image](https://github.com/bredlix/wf_companion_app/assets/91148776/c0fe5aa3-950f-4fcf-ab6b-a9218d8a0a19)
+#updates from blredlix 
+- target SDK updated to 35 instead of 34
+- added languages
+- added new image
+- removed snackbar toast message
 
 The main purpose of this app is to open your watch face’s Google Play Store page directly on the connected Wear OS smartwatch with a simple click.
 
