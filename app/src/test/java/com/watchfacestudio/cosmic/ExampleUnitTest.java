@@ -1,4 +1,4 @@
-package com.android.wf_companion_app;
+package com.watchfacestudio.cosmic;
 
 import org.junit.Test;
 

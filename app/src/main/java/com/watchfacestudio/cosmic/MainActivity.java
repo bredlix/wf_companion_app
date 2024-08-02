@@ -1,4 +1,4 @@
-package com.android.wf_companion_app;
+package com.watchfacestudio.cosmic;
 
 import android.content.Intent;
 import android.content.ActivityNotFoundException;
@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+//import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +19,7 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
+//import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         checkWatchConnection();
         handler.postDelayed(() -> {
             swipeRefreshLayout.setRefreshing(false);
-            showSnackbar();
+//            showSnackbar();
         }, 1500);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
             handler.postDelayed(() -> {
                 swipeRefreshLayout.setRefreshing(false);
-                showSnackbar();
+//                showSnackbar();
             }, 1500);
         });
 
         openAppButton = findViewById(R.id.open_app_button);
         openAppButton.setOnClickListener(v -> {
 
-            showOpenAppSnackbar();
+//            showOpenAppSnackbar();
 
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.addCategory(Intent.CATEGORY_BROWSABLE);
@@ -151,41 +151,41 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showSnackbar() {
-        Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
-        nodeListTask.addOnSuccessListener(nodes -> {
-            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
-            for (Node node : nodes) {
-                if (node.isNearby()) {
-                    String displayName = node.getDisplayName();
-                    String message = "Wearable connected: " + displayName;
-                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, message, Snackbar.LENGTH_LONG);
-                    snackbar.setAnchorView(swipeRefreshLayout);
-                    snackbar.show();
-                    return;
-                }
-            }
-            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
-            snackbar.setAnchorView(swipeRefreshLayout);
-            snackbar.show();
-        });
-    }
+//    private void showSnackbar() {
+//        Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
+//        nodeListTask.addOnSuccessListener(nodes -> {
+//            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
+//            for (Node node : nodes) {
+//                if (node.isNearby()) {
+//                    String displayName = node.getDisplayName();
+//                    String message = "Wearable connected: " + displayName;
+//                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, message, Snackbar.LENGTH_LONG);
+//                    snackbar.setAnchorView(swipeRefreshLayout);
+//                    snackbar.show();
+//                    return;
+//                }
+//            }
+//            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
+//            snackbar.setAnchorView(swipeRefreshLayout);
+//            snackbar.show();
+//        });
+//    }
 
-    private void showOpenAppSnackbar() {
-        Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
-        nodeListTask.addOnSuccessListener(nodes -> {
-            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
-            for (Node node : nodes) {
-                if (node.isNearby()) {
-                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "Check your watch.", Snackbar.LENGTH_LONG);
-                    snackbar.setAnchorView(swipeRefreshLayout);
-                    snackbar.show();
-                    return;
-                }
-            }
-            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
-            snackbar.setAnchorView(swipeRefreshLayout);
-            snackbar.show();
-        });
-    }
+//    private void showOpenAppSnackbar() {
+//        Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
+//        nodeListTask.addOnSuccessListener(nodes -> {
+//            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
+//            for (Node node : nodes) {
+//                if (node.isNearby()) {
+//                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "Check your watch.", Snackbar.LENGTH_LONG);
+//                    snackbar.setAnchorView(swipeRefreshLayout);
+//                    snackbar.show();
+//                    return;
+//                }
+//            }
+//            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
+//            snackbar.setAnchorView(swipeRefreshLayout);
+//            snackbar.show();
+//        });
+//    }
 }

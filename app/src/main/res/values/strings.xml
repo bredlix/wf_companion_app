@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">WATCH FACE NAME</string>
-    <string name="dev_id">8530728375127376092</string>
-    <string name="policy_url">https://i.giphy.com/9mZoOe2CWoeha.webp</string>
-    <string name="text1">  This watch face companion app is designed to help you install watchface to your wearable device.</string>
-    <string name="status_on"> Your device is connected.\nClick the action button bellow and continue on the watch.</string>
+    <string name="app_name">Cosmonaut Watchface</string>
+    <string name="dev_id">7713968007458624680</string>
+    <string name="policy_url">https://sites.google.com/view/stevetex-design/privacy-policy</string>
+    <string name="text1">This watch face companion app is designed to help you install watchface to your wearable device.</string>
+    <string name="status_on">" Your device is connected. Click the action button bellow and continue on the watch."</string>
     <string name="status_off"> No connected device found.\nConnect Wear OS device to your phone and refresh the page.</string>
     <string name="status_placeholder">Checking wearable connection status…</string>
     <string name="CTA">Install to wearable</string>
+    <string name="Image_description">Watch face image"</string>
 </resources>

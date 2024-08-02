@@ -6,6 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/bottom_navigation"
+    android:layout_alignParentTop="false"
+    android:layout_alignParentEnd="false"
+    android:layout_alignParentBottom="false"
+    android:layout_centerInParent="true"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="false"
+    android:adjustViewBounds="true"
+    android:contentDescription="@string/app_name"
+    android:cropToPadding="false"
+    android:foregroundGravity="bottom"
+    android:scaleType="fitXY"
+    app:srcCompat="@drawable/bg_app" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -36,8 +54,9 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_view_img"
                     style="@style/MainAppTheme.CardView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="300dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="0dp"
                     app:cardCornerRadius="16dp">
 
@@ -45,6 +64,7 @@
                         android:id="@+id/image_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:contentDescription="@string/Image_description"
                         android:scaleType="centerInside"
                         android:src="@drawable/wf_img" />
 
@@ -53,20 +73,23 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_view"
                     style="@style/MainAppTheme.CardView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     app:cardCornerRadius="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
 
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_margin="16dp"
                             android:text="@string/text1" />
 

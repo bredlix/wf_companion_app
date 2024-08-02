@@ -3,16 +3,15 @@ plugins {
 }
 
 android {
-    namespace = "com.android.wf_companion_app"
-    compileSdk = 34
+    namespace = "com.watchfacestudio.cosmic"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.android.wf_companion_app"
+        applicationId = "com.watchfacestudio.cosmic"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
+        targetSdk = 35
+        versionCode = 10008
+        versionName = "3.0.0p"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -44,4 +43,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }

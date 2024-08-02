@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cosmonaut Watchface</string>
+    <string name="text1">Această aplicație de acompaniere te va ajuta să instalezi fața de ceas pe Smartwatch.</string>
+    <string name="status_on">Ceasul este conectat. Apasă butonul de mai jos pentru a instala aplicația.</string>
+    <string name="status_off">Nu este conectat niciun dispozitiv. Conectează ceasul și dă refresh glisând de sus în jos.</string>
+    <string name="status_placeholder">Detectăm starea conectării ceasului...</string>
+    <string name="CTA">Instalează pe ceas</string>
+</resources>
