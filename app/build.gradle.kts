@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.android.wf_companion_app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.android.wf_companion_app"
