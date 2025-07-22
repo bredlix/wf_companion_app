@@ -6,8 +6,11 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
+import android.util.DisplayMetrics;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -24,21 +27,33 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.graphics.Insets;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView watchStatus;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Handler handler;
     private MaterialButton openAppButton;
+    private BottomNavigationView bottomNavigationView;
+    private View coordinatorLayoutRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
         setContentView(R.layout.activity_main);
+
+        coordinatorLayoutRoot = findViewById(android.R.id.content);
 
         watchStatus = findViewById(R.id.watch_status);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
-        handler = new Handler();
+        handler = new Handler(Looper.getMainLooper());
 
         swipeRefreshLayout.setColorSchemeResources(R.color.md_theme_onPrimary);
         swipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.md_theme_primary);
@@ -61,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         openAppButton = findViewById(R.id.open_app_button);
+        openAppButton.setEnabled(false);
+        openAppButton.setAlpha(.5f);
+
         openAppButton.setOnClickListener(v -> {
 
             showOpenAppSnackbar();
@@ -82,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.openDevPage) {
@@ -105,13 +123,34 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (id == R.id.policyButton) {
                 String policyUrl = getString(R.string.policy_url);
-                Uri uri = Uri.parse(policyUrl);
-                Intent intentPolicy = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intentPolicy = new Intent(Intent.ACTION_VIEW, Uri.parse(policyUrl));
                 startActivity(intentPolicy);
                 return true;
             } else {
                 return false;
             }
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(swipeRefreshLayout, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(insets.left, insets.top, insets.right, v.getPaddingBottom());
+
+            DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+            float density = displayMetrics.density;
+            int indicatorEndOffsetDp = 64;
+            int indicatorEndOffsetPx = (int) (indicatorEndOffsetDp * density);
+
+            swipeRefreshLayout.setProgressViewOffset(false, insets.top, insets.top + indicatorEndOffsetPx);
+
+            return windowInsets;
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNavigationView, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars());
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            lp.bottomMargin = insets.bottom;
+            v.setLayoutParams(lp);
+            return windowInsets;
         });
 
         checkWatchConnection();
@@ -152,39 +191,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSnackbar() {
+        View snackbarParentView = coordinatorLayoutRoot;
+        View visualAnchorView = bottomNavigationView;
+
         Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
         nodeListTask.addOnSuccessListener(nodes -> {
-            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
             for (Node node : nodes) {
                 if (node.isNearby()) {
                     String displayName = node.getDisplayName();
                     String message = "Wearable connected: " + displayName;
-                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, message, Snackbar.LENGTH_LONG);
-                    snackbar.setAnchorView(swipeRefreshLayout);
+                    Snackbar snackbar = Snackbar.make(snackbarParentView, message, Snackbar.LENGTH_LONG);
+                    snackbar.setAnchorView(visualAnchorView);
                     snackbar.show();
                     return;
                 }
             }
-            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
-            snackbar.setAnchorView(swipeRefreshLayout);
+            Snackbar snackbar = Snackbar.make(snackbarParentView, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
+            snackbar.setAnchorView(visualAnchorView);
             snackbar.show();
         });
     }
 
     private void showOpenAppSnackbar() {
+        View snackbarParentView = coordinatorLayoutRoot;
+        View visualAnchorView = bottomNavigationView;
+
         Task<List<Node>> nodeListTask = Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
         nodeListTask.addOnSuccessListener(nodes -> {
-            View swipeRefreshLayout = findViewById(R.id.bottom_navigation);
             for (Node node : nodes) {
                 if (node.isNearby()) {
-                    Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "Check your watch.", Snackbar.LENGTH_LONG);
-                    snackbar.setAnchorView(swipeRefreshLayout);
+                    Snackbar snackbar = Snackbar.make(snackbarParentView, "Check your watch.", Snackbar.LENGTH_LONG);
+                    snackbar.setAnchorView(visualAnchorView);
                     snackbar.show();
                     return;
                 }
             }
-            Snackbar snackbar = Snackbar.make(swipeRefreshLayout, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
-            snackbar.setAnchorView(swipeRefreshLayout);
+            Snackbar snackbar = Snackbar.make(snackbarParentView, "No Wear OS devices found.", Snackbar.LENGTH_LONG);
+            snackbar.setAnchorView(visualAnchorView);
             snackbar.show();
         });
     }
