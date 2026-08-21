@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.android.wf_companion_app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.android.wf_companion_app"
         minSdk = 27
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -34,7 +34,6 @@ android {
 dependencies {
 
     implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.wearable)

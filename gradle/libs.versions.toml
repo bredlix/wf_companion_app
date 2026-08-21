@@ -1,14 +1,14 @@
 [versions]
-agp = "8.11.1"
+agp = "9.3.1"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-appcompat = "1.7.1"
-material = "1.12.0"
-activity = "1.10.1"
-constraintlayout = "2.2.1"
-wearable = "1.1.0"
-playServicesWearable = "19.0.0"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.8.0"
+material = "1.14.0"
+activity = "1.13.0"
+constraintlayout = "2.2.2"
+wearable = "1.2.0"
+playServicesWearable = "20.0.1"
 
 
 [libraries]
@@ -21,7 +21,7 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 wearable = { group = "androidx.wear", name = "wear-remote-interactions", version.ref = "wearable" }
 play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version = "1.1.0" }
+swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version = "1.2.0" }
 
 
 [plugins]
